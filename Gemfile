@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.1'
 
 gem 'simple_form'
-gem 'bootstrap-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3'
@@ -47,7 +46,6 @@ end
 
 group :test do
   gem "rspec-rails"
-  gem 'shoulda-matchers'
   gem 'rack_session_access'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
