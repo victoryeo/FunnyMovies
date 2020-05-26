@@ -46,7 +46,6 @@ end
 
 group :test do
   gem "rspec-rails"
-  gem 'rack_session_access'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
