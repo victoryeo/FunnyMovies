@@ -1,21 +1,20 @@
 <div class="container">
   <div class="row video-full" data-video-id="<%= @video.id %>">
     <div class="col-md-10">
-      <h1>
-        <%= @video.name %>
-      </h1>
       <p class="small">
         <%= link_to 'Back to videos' ,videos_path %>
       </p>
+      <h1>
+        Title: <%= @video.name %>
+      </h1>
         <iframe height="264" id="my-video" width="640" src="<%= @video.video_url %>"
           frameborder="1" >
-                </iframe>
-
+        </iframe>
     </div>
     <div class="col-md-2">
       <h1>
         <span class="likes-count">
-          <%= @video.likes %>
+          Likes <%= @video.likes %>
         </span>
         <span class="glyphicon glyphicon-heart"></span>
       </h1>

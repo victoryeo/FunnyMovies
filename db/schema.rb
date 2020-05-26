@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_065409) do
     t.string "video_url"
     t.string "thumbnail_url"
     t.integer "likes", default: 0
+    t.integer "dislikes", default: 0
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

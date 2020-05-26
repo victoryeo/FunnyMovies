@@ -2,19 +2,39 @@
   <div class="row">
     <% @videos.each do |video| %>
       <div class="col-md-3 thumb video-thumb" data-video-id="<%= video.id %>">
-        <div class="likes">
-          <span class="glyphicon glyphicon-heart"></span>
-          <span class="likes-count">
+        <table>
+          <tr>
+            <td>
             <img src="<%= video.thumbnail_url %>">
-          </span>
-           Title: <%= video.name %><br/>
-           Shared by: <%= video.user.email %> <br/>
-          <%= video.likes %>
-          <%= image_tag 'like.jpeg', style: 'height:2%;width:2%;' %>       
-           Description:
-           <br/>
+            </td>
+            <td>
+              <table>
+              <tr><td>
+              Title: <%= video.name %>
+              </td></tr>
+              <tr><td>
+                Shared by: <%= video.user.email %>
+                <% if user_signed_in? %>
+                <%= image_tag 'like.jpeg', style: 'display:inline;height:5%;width:5%;'-%>
+                <% end -%>
+              </td></tr>
+              <tr><td>
+                <%=video.likes-%>
+                <%= image_tag 'like.jpeg', style: 'display:inline;height:2%;width:2%;'-%>
+                <%=video.dislikes-%>
+                <%= image_tag 'dislike.jpeg', style: 'display:inline;height:2%;width:2%;'-%>
+              <td></tr>
+              <tr><td>
+                  Description:
+              </td></tr>
+              <tr><td>
+                    xxxx
+              </td></tr>
+              </table>
+            </td>
+          </tr>
+          </table>
           <%= link_to 'Play', video,  class:"btn btn-default" %>
-        </div>
       </div>
     <% end %>
   </div>
