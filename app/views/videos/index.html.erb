@@ -15,14 +15,14 @@
               <tr><td>
                 Shared by: <%= video.user.email %>
                 <% if user_signed_in? %>
-                <%= image_tag 'like.jpeg', style: 'display:inline;height:5%;width:5%;'-%>
+                <%= image_tag 'like.jpg', style: 'display:inline;height:5%;width:5%;'-%>
                 <% end -%>
               </td></tr>
               <tr><td>
                 <%=video.likes-%>
-                <%= image_tag 'like.jpeg', style: 'display:inline;height:2%;width:2%;'-%>
+                <%= image_tag 'like.jpg', style: 'display:inline;height:2%;width:2%;'-%>
                 <%=video.dislikes-%>
-                <%= image_tag 'dislike.jpeg', style: 'display:inline;height:2%;width:2%;'-%>
+                <%= image_tag 'dislike.jpg', style: 'display:inline;height:2%;width:2%;'-%>
               <td></tr>
               <tr><td>
                   Description:
