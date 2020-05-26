@@ -6,12 +6,12 @@ RSpec.describe Video, :type => :model do
   subject { described_class.new (
      )
   }
+  let(:user) {User.create!(email: "2@2.com", password: "123456")}
   it "is valid with valid attributes" do
-    seller =
-       User.create(:email => "jane@a.com", :password => "pw1234")
 
+    pp user.id
     subject.video_url = "https://www.youtube.com"
-    subject.user_id = seller.id
+    subject.user_id = user.id
     expect(subject).to be_valid
   end
 
