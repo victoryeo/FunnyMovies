@@ -31,6 +31,7 @@
     <header class="mb-4">
       <nav class="flex items-center justify-between flex-wrap bg-gray-100 py-3 lg:px-10 px-3 text-gray-700 border-b border-gray-400">
         <div class="flex items-center flex-no-shrink mr-6">
+          <%= image_tag 'home.png', style: 'height:10%;width:10%;' %>
           <%= link_to "Funny Movies", root_path, class:"link text-xl tracking-tight font-semibold" %>
         </div>
         <div class="block lg:hidden">
@@ -46,10 +47,13 @@
             <%= link_to 'Share video', new_video_path, class:"btn btn-default" %>&nbsp;
              <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
             <% else %>
-              <input type="text" id="email" name="email" value="email" size="10">&nbsp;
-              <input type="password" id="password" name="password" value="password" size="10">&nbsp;
-              <%= link_to "Login", new_user_session_path, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
-              <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-default block" %>
+               <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+                 <%= f.label :email %>
+                 <%= f.text_field :email %>
+                 <%= f.label :password %>
+                 <%= f.password_field :password %>
+                <%= f.submit "Login/Register", class:"btn btn-default" %>
+               <% end -%>
             <% end %>
           </div>
         </div>
