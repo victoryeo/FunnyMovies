@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <% @videos.each do |video| %>
+      <div class="col-md-3 thumb video-thumb" data-video-id="<%= video.id %>">
+        <div class="likes">
+          <span class="glyphicon glyphicon-heart"></span>
+          <span class="likes-count">
+            <img src="<%= video.thumbnail_url %>">
+          </span>
+           Title: <%= video.name %><br/>
+           Shared by: <%= video.user.email %> <br/>
+          <%= video.likes %>
+          <%= image_tag 'like.jpeg', style: 'height:2%;width:2%;' %>       
+           Description:
+           <br/>
+          <%= link_to 'Play', video,  class:"btn btn-default" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="pull-right">
+      </div>
+    </div>
+  </div>
+</div>

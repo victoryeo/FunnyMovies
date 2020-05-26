@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row video-full" data-video-id="<%= @video.id %>">
+    <div class="col-md-10">
+      <h1>
+        <%= @video.name %>
+      </h1>
+      <p class="small">
+        <%= link_to 'Back to videos' ,videos_path %>
+      </p>
+        <iframe height="264" id="my-video" width="640" src="<%= @video.video_url %>"
+          frameborder="1" >
+                </iframe>
+
+    </div>
+    <div class="col-md-2">
+      <h1>
+        <span class="likes-count">
+          <%= @video.likes %>
+        </span>
+        <span class="glyphicon glyphicon-heart"></span>
+      </h1>
+    </div>
+  </div>
+</div>

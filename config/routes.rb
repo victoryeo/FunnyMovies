@@ -5,8 +5,10 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
     end
 
+  resources :videos
 
   devise_for :users
-  root to: 'home#index'
+  #root to: 'home#index'
+  root to: 'videos#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
