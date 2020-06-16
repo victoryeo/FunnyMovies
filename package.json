@@ -1,5 +1,5 @@
 {
-  "name": "test00",
+  "name": "FunnyMovies",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
