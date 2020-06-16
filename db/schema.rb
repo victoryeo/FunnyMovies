@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_05_20_065409) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_065409) do
     t.string "thumbnail_url"
     t.integer "likes", default: 0
     t.integer "dislikes", default: 0
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_videos_on_user_id"
