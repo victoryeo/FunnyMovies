@@ -20,9 +20,10 @@ class VideosController < ApplicationController
     @video = Video.new(video_params)
     @video.user_id = current_user.id
     # thumbnail root_url
-    urlname = @video.video_url.gsub(/http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/embed\/)/,'\1')
+    urlname = @video.video_url.gsub(/http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=)/,'\1')
     Rails.logger.debug("#{urlname}")
     @video.thumbnail_url = "http://img.youtube.com/vi/" + urlname + "/default.jpg"
+    @video.video_url = "https://www.youtube.com/embed/" + urlname
     respond_to do |format|
       if @video.save!
         Rails.logger.debug("video save")
