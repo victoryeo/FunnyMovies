@@ -18,21 +18,29 @@ class VideosController < ApplicationController
   def create
     Rails.logger.debug("video create")
     @video = Video.new(video_params)
-    @video.user_id = current_user.id
-    # thumbnail root_url
-    urlname = @video.video_url.gsub(/http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=)/,'\1')
-    Rails.logger.debug("#{urlname}")
-    @video.thumbnail_url = "http://img.youtube.com/vi/" + urlname + "/default.jpg"
-    @video.video_url = "https://www.youtube.com/embed/" + urlname
-    respond_to do |format|
-      if @video.save!
-        Rails.logger.debug("video save")
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
-        format.json { render :show, status: :created, location: @video }
-      else
-        Rails.logger.debug("video error")
+    if @video.video_url.blank?
+      Rails.logger.debug("video url empty")
+      respond_to do |format|
         format.html { render :new }
         format.json { render json: @video.errors, status: :unprocessable_entity }
+      end
+    else
+      @video.user_id = current_user.id
+      # thumbnail root_url
+      urlname = @video.video_url.gsub(/http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=)/,'\1')
+      Rails.logger.debug("#{urlname}")
+      @video.thumbnail_url = "http://img.youtube.com/vi/" + urlname + "/default.jpg"
+      @video.video_url = "https://www.youtube.com/embed/" + urlname
+      respond_to do |format|
+        if @video.save!
+          Rails.logger.debug("video save")
+          format.html { redirect_to @video, notice: 'Video was successfully created.' }
+          format.json { render :show, status: :created, location: @video }
+        else
+          Rails.logger.debug("video error")
+          format.html { render :new }
+          format.json { render json: @video.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
